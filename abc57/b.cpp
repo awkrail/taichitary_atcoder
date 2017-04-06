@@ -62,14 +62,14 @@ int main(){
         cin >> check[j].x >> check[j].y;
     }
 
-    int min = 10000;
     int tmp;
     for(int k=0; k<n; k++){
         //生徒ごとにループ
+        int min = 1e8*4;
         for(int l=0; l<m; l++){
             int kyori = abs(student[k].x - check[l].x) + abs(student[k].y - check[l].y);
-            if(min > kyori) min = kyori; tmp=l;
+            if(min > kyori){min = kyori; tmp=l;}
         }
-        cout << tmp << endl;
+        cout << tmp+1 << endl;
     }
 }

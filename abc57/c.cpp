@@ -44,9 +44,37 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
+struct AB{
+    int A;
+    int B;
+};
+
 int main(){
 
+    int n;
+    cin >> n;
+    AB ab[int(1e5 + 50)];
+    double root_n = sqrt(n) + 10;
+    int root_int = int(root_n);
+    int cnt = 0;
 
+    for(int i=1; i<root_int; i++){
+        if(n % i == 0){
+            ab[cnt].A = i;
+            ab[cnt].B = n / 1;
+        }
+    }
 
+    int mx = 0;
+    int min_keta = 1e5 + 10;
+    int keta;
+    for(int j=0; j<root_int; j++){
+        if(mx < ab[j].A || mx < ab[j].B){
+            keta = max(ab[j].A, ab[j].B); //桁の大きいほうを取る
+            if(min_keta > keta) min_keta = keta; //桁の大きいほうの最小値を求める
+        }
+    }
+
+    cout << min_keta << endl;
 
 }
