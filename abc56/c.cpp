@@ -46,7 +46,17 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
-
+    int x;
+    cin >> x;
+    int n = 1e5;
+    int max_dst;
+    for(int i=0; i<n; i++){
+        max_dst = (1.0/2.0)*i*(i+1);
+        if(max_dst >= x){
+            cout << i << endl;
+            break;
+        }
+    }
 
 
 }

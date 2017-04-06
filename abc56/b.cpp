@@ -46,7 +46,24 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
+    int a, b, W;
+    cin >> W >> a >> b;
 
+    if(a+W < b){
+        if(b-a-W > 0){
+            cout << b-a-W << endl;
+        }else{
+            cout << 0 << endl;
+        }
+    }else if(b < a){
+        if(a-b-W > 0){
+            cout << a-b-W << endl;
+        }else{
+            cout << 0 << endl;
+        }
+    }else{
+        cout << 0 << endl;
+    }
 
 
 }
