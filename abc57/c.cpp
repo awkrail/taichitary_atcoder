@@ -45,13 +45,23 @@ int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
 struct AB{
-    int A;
-    int B;
+    ll A;
+    ll B;
 };
+
+int f(ll x){
+    int keta = 1;
+    while(x >= 10){
+        x /= 10;
+        keta++;
+    }
+
+    return keta;
+}
 
 int main(){
 
-    int n;
+    long long n;
     cin >> n;
     AB ab[int(1e5 + 50)];
     double root_n = sqrt(n) + 10;
@@ -61,16 +71,17 @@ int main(){
     for(int i=1; i<root_int; i++){
         if(n % i == 0){
             ab[cnt].A = i;
-            ab[cnt].B = n / 1;
+            ab[cnt].B = n / i;
+            cnt++;
         }
     }
 
     int mx = 0;
     int min_keta = 1e5 + 10;
-    int keta;
-    for(int j=0; j<root_int; j++){
+    int keta = 0;
+    for(int j=0; j<cnt; j++){
         if(mx < ab[j].A || mx < ab[j].B){
-            keta = max(ab[j].A, ab[j].B); //桁の大きいほうを取る
+            keta = max(f(ab[j].A), f(ab[j].B)); //桁の大きいほうを取る
             if(min_keta > keta) min_keta = keta; //桁の大きいほうの最小値を求める
         }
     }
