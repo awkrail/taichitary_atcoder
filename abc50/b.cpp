@@ -46,7 +46,32 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
+    int n, m, cnt=0;
+    int prob[110];
+    int ans[110];
 
+    cin >> n;
+    for(int i=0; i<n; i++){
+        cin >> prob[i];
+    }
+    cin >> m;
+    int index, val, sum;
+    for(int j=0; j<m; j++){
+        cin >> index >> val;
+        index--; //0にあわせる
 
+        int tmp = prob[index]; //一時的に保存
+
+        prob[index] = val;
+        for(int k=0; k<n; k++) sum += prob[k];
+
+        ans[cnt] = sum;
+        prob[index] = tmp;
+        sum = 0; cnt++;
+    }
+
+    for(int l=0; l<cnt; l++){
+        cout << ans[l] << endl;
+    }
 
 }

@@ -46,7 +46,42 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
+    int n, a[int(1e5 + 10)], check[int(1e5+10)];
+    cin >> n;
+    bool flag = true;
+    int data = 1;
+    int ck = 0;
 
 
+    for(int i=0; i<n; i++){
+        cin >> a[i];
+        check[a[i]]++;
+    }
 
+
+    //対称性のチェック
+    if(n % 2 == 0){
+        for(int count=0; count<n; count++){
+            if(count % 2 == 0) {continue;}
+            if(check[count] != 2) {flag = false;}
+        }
+    }else{
+        for(int odd_count=1; odd_count<n; odd_count++){
+            if(odd_count % 2 != 0) {continue;}
+            if(check[odd_count] != 2) {flag = false;}
+        }
+    }
+
+
+    if(flag){
+        int c = (n/2);
+        for(int k=0; k<c; k++){
+            data = (2*data) % MOD;
+        }
+
+        cout << data << endl;
+
+    }else{
+        cout << 0 << endl;
+    }
 }
