@@ -44,32 +44,32 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-ll fact(int x){
-    if(x == 1) return 1;
-    else return x*fact(x-1);
-}
-
-
 int main(){
 
-    int n;
-    cin >> n;
-    ll mod = 1e9 + 7;
+    string o;
+    string e;
 
-    /**
-    ll fact_n = fact(n);
+    cin >> o;
+    cin >> e;
 
+    int cnt = o.size() + e.size();
+    int i = 1;
+    int otop=0;
+    int etop=0;
 
-    if(n != 1){
-        //素朴に解いてみる
-        for(int i=1; i<=fact_n; i++){
-            if( fact_n%i == 0) cnt++;
+    while(cnt != 0){
+        if(i % 2 != 0){
+            cout << o[otop];
+            otop++;
+            i++;
+        }else{
+            cout << e[etop];
+            etop++;
+            i++;
         }
+
+        cnt--;
     }
 
-    ll ans = cnt % mod;
-     **/
-
-
-
+    cout << endl;
 }

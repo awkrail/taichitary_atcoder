@@ -44,31 +44,8 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-ll fact(int x){
-    if(x == 1) return 1;
-    else return x*fact(x-1);
-}
-
-
 int main(){
 
-    int n;
-    cin >> n;
-    ll mod = 1e9 + 7;
-
-    /**
-    ll fact_n = fact(n);
-
-
-    if(n != 1){
-        //素朴に解いてみる
-        for(int i=1; i<=fact_n; i++){
-            if( fact_n%i == 0) cnt++;
-        }
-    }
-
-    ll ans = cnt % mod;
-     **/
 
 
 

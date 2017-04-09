@@ -44,9 +44,13 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
+int check[int(1e5+10)];
+
 int main(){
 
-    int n, a[int(1e5 + 10)], check[int(1e5+10)];
+    //TODO: 2つだけWA. 考え方はあっているっぽいが...?
+
+    int n, a[int(1e5 + 10)];
     cin >> n;
     bool flag = true;
     int data = 1;
