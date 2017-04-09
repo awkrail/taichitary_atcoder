@@ -49,14 +49,8 @@ int n, m;
 
 //TODO: C問題 解けない.. 次に聞く
 
-int stroke(int start, int visited[], int res){
-
-    //終了条件
-    bool flag = true;
-    for(int j=0; j<n; j++){
-        if(visited[j] == 0) flag = false;
-    }
-    if(flag) return 1;
+/**
+int stroke(int start, int visited[]){
 
     vector<int>::iterator ite;
     for(ite = edge[start].begin(); ite != edge[start].end(); ite++ ){
@@ -68,7 +62,6 @@ int stroke(int start, int visited[], int res){
         }else{
             //いったことないところがないとき
             //もし, 全部の部分に訪れていれば..
-            //ここのチェックがおかしいのでは
             bool flag2 = true;
             for(int i=0; i<n; i++){
                 if(visited[i] == 0) flag2 = false;
@@ -81,6 +74,7 @@ int stroke(int start, int visited[], int res){
     return 0;
 
 }
+ **/
 
 int main(){
 
@@ -92,13 +86,23 @@ int main(){
 
     for(int i=0; i<m; i++){
         cin >> node; //頂点をかく
-        cin >> target;
+        cin >> target; //nodeからつながっているところ
         node--; target--; //0に頂点を合わせる
         edge[node].push_back(target); // 添字:頂点 vectorの要素:行けるところの頂点
         edge[target].push_back(node);
     }
 
-    int cnt = stroke(0, visited, 0);
-    cout << cnt << endl;
+    for(int k=0; k<n; k++){
+        cout << k << "番目";
+        vector<int>::iterator ite;
+        for(ite = edge[k].begin(); ite != edge[k].end(); ite++){
+            cout << (*ite);
+        }
+
+        cout << endl;
+    }
+
+    //int cnt = stroke(0, visited, 0);
+    //cout << cnt << endl;
 
 }
