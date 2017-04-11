@@ -44,58 +44,35 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-ll fact(int x){
-    if(x == 1) return 1;
-    else return x*fact(x-1);
-}
-
-int a[1010];
-
-
 int main(){
 
-    int n;
-    cin >> n;
-    ll mod = 1e9 + 7;
+    string s;
+    cin >> s;
+    vector<char> str;
 
-    int root = int(sqrt(n)) + 5;
+    for(int j=s.size()-1; j>=0; j--) str.pb(s[j]); //逆順で受け取る
 
-    for(int j=2; j<=n; j++){
-        int tmp = j;
-        for(int i=2; i<root; i++){
-            int cnt = 0;
-            while(tmp % i == 0){
-                tmp /= i;
-                cnt++;
-            }
-            a[i] += cnt;
-        }
-        if(tmp != 1) a[tmp] += 1;
-    }
-
-    ll sum = 1;
-    for(int k=0; k<1010; k++){
-        sum *= (a[k]+1);
-        sum = sum % MOD;
-    }
-
-    cout << sum << endl;
-
-
-
-    /**
-    ll fact_n = fact(n);
-
-
-    if(n != 1){
-        //素朴に解いてみる
-        for(int i=1; i<=fact_n; i++){
-            if( fact_n%i == 0) cnt++;
+    while(str.size() >= 5){
+        if(str[0] == 'e' && str[1] == 's' && str[2] == 'a'){
+            //erase
+            for(int i=0; i<5; i++) str.erase(str.begin());
+        }else if(str[0] == 'm' && str[1] == 'a' && str[2] == 'e'){
+            //dream
+            for(int i=0; i<5; i++) str.erase(str.begin());
+        }else if(str[0] == 'r' && str[1] == 'e' && str[2] == 's'){
+            //eraser
+            for(int i=0; i<6; i++) str.erase(str.begin());
+        }else if(str[0] == 'r' && str[1] == 'e' && str[2] == 'm'){
+            //dreamer
+            for(int i=0; i<7; i++) str.erase(str.begin());
+        }else{
+            break;
         }
     }
 
-    ll ans = cnt % mod;
-     **/
+    bool flag = false;
+    if(str.size() == 0) flag = true;
 
-
+    if(flag) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }

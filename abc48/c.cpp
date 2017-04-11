@@ -44,58 +44,38 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-ll fact(int x){
-    if(x == 1) return 1;
-    else return x*fact(x-1);
-}
-
-int a[1010];
-
+ll a[int(1e5)+5];
 
 int main(){
 
-    int n;
-    cin >> n;
-    ll mod = 1e9 + 7;
+    ll n,x;
+    ll cnt=0;
+    cin >> n >> x;
+    for(ll i=0; i<n; i++) cin >> a[i];
 
-    int root = int(sqrt(n)) + 5;
+    for(ll j=0; j<n-1; j++){
+        if(a[j] + a[j+1] <= x) continue;
+        if(a[j] > a[j+1]){
+            ll tmp_sum = a[j] + a[j+1];
+            cnt += tmp_sum - x; //総和-xが回数
+            a[j] -= (tmp_sum - x); //その分,a[j]からひく
+            if(a[j] < 0) {
+                a[j+1] -= abs(a[j]);
+                cnt += abs(a[j]); //マイナス分
+            } //0未満になった分をa[j+1]から引く
 
-    for(int j=2; j<=n; j++){
-        int tmp = j;
-        for(int i=2; i<root; i++){
-            int cnt = 0;
-            while(tmp % i == 0){
-                tmp /= i;
-                cnt++;
-            }
-            a[i] += cnt;
-        }
-        if(tmp != 1) a[tmp] += 1;
-    }
-
-    ll sum = 1;
-    for(int k=0; k<1010; k++){
-        sum *= (a[k]+1);
-        sum = sum % MOD;
-    }
-
-    cout << sum << endl;
-
-
-
-    /**
-    ll fact_n = fact(n);
-
-
-    if(n != 1){
-        //素朴に解いてみる
-        for(int i=1; i<=fact_n; i++){
-            if( fact_n%i == 0) cnt++;
+        }else if(a[j] <= a[j+1]){
+            ll tmp_sum = a[j] + a[j+1];
+            cnt += tmp_sum - x;
+            a[j+1] -= (tmp_sum - x);
+            if(a[j+1] < 0) {
+                a[j+1] = 0; //マイナスになられては困るので
+            } //同様
         }
     }
 
-    ll ans = cnt % mod;
-     **/
+    cout << cnt << endl;
+
 
 
 }

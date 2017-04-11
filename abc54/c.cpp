@@ -44,65 +44,37 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-vector<int> edge[10];
-int n, m;
+int edge[10][10];
 
 //TODO: C問題 解けない.. 次に聞く
 
-/**
-int stroke(int start, int visited[]){
-
-    vector<int>::iterator ite;
-    for(ite = edge[start].begin(); ite != edge[start].end(); ite++ ){
-        if(visited[*ite] == 0){
-            //いったことないところだったとき
-            visited[*ite] = 1; //いったことにして
-            res += stroke(*ite, visited, res);
-            return res;
-        }else{
-            //いったことないところがないとき
-            //もし, 全部の部分に訪れていれば..
-            bool flag2 = true;
-            for(int i=0; i<n; i++){
-                if(visited[i] == 0) flag2 = false;
-            }
-            if(flag2) return res + 1;
-            else return res;
-        }
-    }
-
-    return 0;
-
-}
- **/
-
 int main(){
 
+    int n, m;
     cin >> n >> m;
-    int node, target;
-    int visited[20];
-
-    for(int j=0; j<20; j++) visited[j] = 0; //初期化
+    int a, b;
+    vector<int> data;
+    int cnt = 0;
 
     for(int i=0; i<m; i++){
-        cin >> node; //頂点をかく
-        cin >> target; //nodeからつながっているところ
-        node--; target--; //0に頂点を合わせる
-        edge[node].push_back(target); // 添字:頂点 vectorの要素:行けるところの頂点
-        edge[target].push_back(node);
+        cin >> a >> b;
+        edge[a][b] = 1;
+        edge[b][a] = 1;
     }
 
-    for(int k=0; k<n; k++){
-        cout << k << "番目";
-        vector<int>::iterator ite;
-        for(ite = edge[k].begin(); ite != edge[k].end(); ite++){
-            cout << (*ite);
+    for(int j=1; j<=n; j++){
+        data.push_back(j);
+    }
+
+    do{
+        bool flag = true;
+        for(int k=0; k<n-1; k++){
+            if(data[0] != 1 || edge[data[k]][data[k+1]] != 1) flag = false;
         }
+        if(flag) cnt++;
 
-        cout << endl;
-    }
+    }while(next_permutation(data.begin(), data.end()));
 
-    //int cnt = stroke(0, visited, 0);
-    //cout << cnt << endl;
+    cout << cnt << endl;
 
 }

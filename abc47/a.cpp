@@ -44,58 +44,16 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-ll fact(int x){
-    if(x == 1) return 1;
-    else return x*fact(x-1);
-}
-
-int a[1010];
-
-
 int main(){
 
-    int n;
-    cin >> n;
-    ll mod = 1e9 + 7;
+    int a,b,c;
+    cin >> a >> b >> c;
 
-    int root = int(sqrt(n)) + 5;
-
-    for(int j=2; j<=n; j++){
-        int tmp = j;
-        for(int i=2; i<root; i++){
-            int cnt = 0;
-            while(tmp % i == 0){
-                tmp /= i;
-                cnt++;
-            }
-            a[i] += cnt;
-        }
-        if(tmp != 1) a[tmp] += 1;
+    if(a+b == c || a+c == b || b+c == a){
+        cout << "Yes" << endl;
+    }else{
+        cout << "No" << endl;
     }
-
-    ll sum = 1;
-    for(int k=0; k<1010; k++){
-        sum *= (a[k]+1);
-        sum = sum % MOD;
-    }
-
-    cout << sum << endl;
-
-
-
-    /**
-    ll fact_n = fact(n);
-
-
-    if(n != 1){
-        //素朴に解いてみる
-        for(int i=1; i<=fact_n; i++){
-            if( fact_n%i == 0) cnt++;
-        }
-    }
-
-    ll ans = cnt % mod;
-     **/
 
 
 }
