@@ -55,27 +55,14 @@ int main(){
 
     for(ll j=0; j<n-1; j++){
         if(a[j] + a[j+1] <= x) continue;
-        if(a[j] > a[j+1]){
-            ll tmp_sum = a[j] + a[j+1];
-            cnt += tmp_sum - x; //総和-xが回数
-            a[j] -= (tmp_sum - x); //その分,a[j]からひく
-            if(a[j] < 0) {
-                a[j+1] -= abs(a[j]);
-                cnt += abs(a[j]); //マイナス分
-            } //0未満になった分をa[j+1]から引く
-
-        }else if(a[j] <= a[j+1]){
             ll tmp_sum = a[j] + a[j+1];
             cnt += tmp_sum - x;
             a[j+1] -= (tmp_sum - x);
             if(a[j+1] < 0) {
                 a[j+1] = 0; //マイナスになられては困るので
             } //同様
-        }
     }
 
     cout << cnt << endl;
-
-
 
 }

@@ -44,9 +44,44 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
+struct xy{
+    int x, y;
+};
+
+
+int a[100+10];
+xy p[100+10];
+
 int main(){
 
+    //ちょっとちがうのでかえって修正
 
+    int W,H, n;
+    cin >> W >> H >> n;
+    for(int i=0; i<n; i++){
+        cin >> p[i].x >> p[i].y >> a[i];
+    }
+    xy left,right;
 
+    //左端の点を記録
+    left.x = left.y = 0;
+    right.x = W; right.y = H;
 
+    for(int j=0; j<n; j++){
+        if(a[j] == 1){
+            if(left.x < p[j].x) left.x = p[j].x;
+        }else if(a[j] == 2){
+            if(right.x > p[j].x) right.x = p[j].x;
+        }else if(a[j] == 3){
+            if(left.y < p[j].y) left.y = p[j].y;
+        }else if(a[j] == 4){
+            if(right.y > p[j].y) right.y = p[j].y;
+        }
+    }
+
+    if(right.x > left.x && right.y > left.y){
+        cout << (right.x - left.x)*(right.y - left.y) << endl;
+    }else{
+        cout << 0 << endl;
+    }
 }

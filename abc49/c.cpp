@@ -48,21 +48,22 @@ int main(){
 
     string s;
     cin >> s;
+    int cnt=0;
     vector<char> str;
 
     for(int j=s.size()-1; j>=0; j--) str.pb(s[j]); //逆順で受け取る
 
     while(str.size() >= 5){
-        if(str[0] == 'e' && str[1] == 's' && str[2] == 'a'){
+        if(str[0] == 'e' && str[1] == 's' && str[2] == 'a' && str[3] == 'r' && str[4] == 'e'){
             //erase
             for(int i=0; i<5; i++) str.erase(str.begin());
-        }else if(str[0] == 'm' && str[1] == 'a' && str[2] == 'e'){
+        }else if(str[0] == 'm' && str[1] == 'a' && str[2] == 'e' && str[3] == 'r' && str[4] == 'd'){
             //dream
             for(int i=0; i<5; i++) str.erase(str.begin());
-        }else if(str[0] == 'r' && str[1] == 'e' && str[2] == 's'){
+        }else if(str[0] == 'r' && str[1] == 'e' && str[2] == 's' && str[3] == 'a' && str[4] == 'r' && str[5] == 'e'){
             //eraser
             for(int i=0; i<6; i++) str.erase(str.begin());
-        }else if(str[0] == 'r' && str[1] == 'e' && str[2] == 'm'){
+        }else if(str[0] == 'r' && str[1] == 'e' && str[2] == 'm' && str[3] == 'a' && str[4] == 'e' && str[5] == 'r' && str[6] == 'd'){
             //dreamer
             for(int i=0; i<7; i++) str.erase(str.begin());
         }else{

@@ -44,9 +44,18 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
+int a[int(1e5)+10];
+
 int main(){
+    string s;
+    cin >> s;
 
+    int cnt=0;
+    for(int i=0; i<s.size()-1; i++){
+        if(s[i] != s[i+1]) cnt++;
+    }
 
+    cout << cnt << endl;
 
 
 }
