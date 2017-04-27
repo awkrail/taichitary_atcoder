@@ -44,8 +44,72 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
+int can[10];
+
 int main(){
 
+    int n, k;
+    cin >> n >> k;
+    int d[30];
+    vector<int> v;
+    string s, s2;
+
+    for(int i=0; i<k; i++){
+        cin >> d[i];
+        can[d[i]] = 1;
+    }
+
+    //使用可能のものがvectorにはいっている
+    for(int j=0; j<10; j++){
+        if(can[j] != 1) v.pb(j);
+    }
+
+    //一番大きい数字を作成する
+    reverse(v.begin(), v.end());
+
+    for(int i=0; i<v.size(); i++){
+        s += to_string(v[i]);
+    }
+
+    if(stoi(s) < n){
+        //最小の数値+けたふやし
+
+        string first;
+
+        for(int i=0; i<v.size(); i++){
+            s2 += to_string(v[i]);
+        }
+
+        if(s2[0] == '0'){
+            //0をうしろにまわす
+            s2.erase(s2.begin());
+            s2.push_back('0');
+            first = '0';
+        }else{
+            //先頭要素
+            first = s2[0];
+        }
+
+        int pay = 0;
+
+        while(n-pay > 0){
+
+            string ns = s2 + first;
+            pay = stoi(ns);
+        }
+
+        cout << pay << endl;
+    }else{
+
+        int pay = stoi(s);
+
+        while(pay-n > 0){
+
+
+
+        }
+
+    }
 
 
 

@@ -56,38 +56,16 @@ int main(){
         cin >> s[i];
     }
 
-    for(int k=0; k<l; k++){
-        //1文字ずつbabbleSortを実行する
-        for(int i=0; i<n; i++){
-            sum[i] += s[i][k];
+    for(int i=0; i<n; i++){
+        for(int j=1; j<n; j++){
+            if(strcmp(s[j-1].c_str(), s[j].c_str()) > 0) swap(s[j-1], s[j]);
         }
-
-        for(int i=0; i<n; i++){
-            for(int j=1; j<n; j++){
-
-                if(sum[j-1] > sum[j]) swap(s[j-1], s[j]);
-            }
-        }
-
-        for(int f=0; f<n; f++){
-            cout << s[f];
-        }
-
-        for(int g=0; g<n; g++){
-            cout << sum[g] << " ";
-        }
-
-        cout << endl;
-
     }
 
-    /**
-    for(int i=0; i<n; i++){
-        cout << s[i];
+
+    for(int j=0; j<n; j++){
+        cout << s[j];
     }
 
     cout << endl;
-    **/
-
-
 }

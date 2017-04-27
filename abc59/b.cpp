@@ -44,50 +44,30 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-string s[110];
-int sum[110];
-
 int main(){
 
-    int n, l;
-    cin >> n >> l;
+    string s1;
+    string s2;
 
-    for(int i=0; i<n; i++){
-        cin >> s[i];
+    cin >> s1 >> s2;
+
+    if(s1.size() > s2.size()){
+        cout << "GREATER" << endl;
+    }else if(s1.size() < s2.size()){
+        cout << "LESS" << endl;
+    }else{
+        //ここにおなじ桁数のときの比較
+        //前から見ていっておおきいのをみればよくね
+        int type = 3;
+        for(int i=0; i<s1.size(); i++){
+            if(s1[i] - '0' > s2[i] - '0'){ type=1; break; }
+            else if(s1[i] - '0' < s2[i] - '0'){ type=2; break; }
+            else continue;
+        }
+
+        if(type==1) cout << "GREATER" << endl;
+        else if(type==2) cout << "LESS" << endl;
+        else cout << "EQUAL" << endl;
     }
-
-    for(int k=0; k<l; k++){
-        //1文字ずつbabbleSortを実行する
-        for(int i=0; i<n; i++){
-            sum[i] += s[i][k];
-        }
-
-        for(int i=0; i<n; i++){
-            for(int j=1; j<n; j++){
-
-                if(sum[j-1] > sum[j]) swap(s[j-1], s[j]);
-            }
-        }
-
-        for(int f=0; f<n; f++){
-            cout << s[f];
-        }
-
-        for(int g=0; g<n; g++){
-            cout << sum[g] << " ";
-        }
-
-        cout << endl;
-
-    }
-
-    /**
-    for(int i=0; i<n; i++){
-        cout << s[i];
-    }
-
-    cout << endl;
-    **/
-
 
 }

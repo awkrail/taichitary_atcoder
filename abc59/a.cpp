@@ -44,50 +44,18 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-string s[110];
-int sum[110];
-
 int main(){
 
-    int n, l;
-    cin >> n >> l;
+    string s1, s2, s3;
 
-    for(int i=0; i<n; i++){
-        cin >> s[i];
-    }
+    cin >> s1 >> s2 >> s3;
 
-    for(int k=0; k<l; k++){
-        //1文字ずつbabbleSortを実行する
-        for(int i=0; i<n; i++){
-            sum[i] += s[i][k];
-        }
+    char c1 = toupper(s1[0]);
+    char c2 = toupper(s2[0]);
+    char c3 = toupper(s3[0]);
 
-        for(int i=0; i<n; i++){
-            for(int j=1; j<n; j++){
 
-                if(sum[j-1] > sum[j]) swap(s[j-1], s[j]);
-            }
-        }
-
-        for(int f=0; f<n; f++){
-            cout << s[f];
-        }
-
-        for(int g=0; g<n; g++){
-            cout << sum[g] << " ";
-        }
-
-        cout << endl;
-
-    }
-
-    /**
-    for(int i=0; i<n; i++){
-        cout << s[i];
-    }
-
-    cout << endl;
-    **/
+    cout << c1 << c2 << c3 << endl;
 
 
 }
