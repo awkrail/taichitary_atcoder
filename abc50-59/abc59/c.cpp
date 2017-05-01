@@ -44,20 +44,10 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-int main(){
+int n;
 
-    int n;
-    cin >> n;
-    ll a[int(1e5)+5];
 
-    for(int i=0; i<n; i++){
-        cin >> a[i];
-    }
-
-    ll cnt=0;
-    ll sum=0;
-
-    sum += a[0];
+ll rp(ll *a, ll sum, ll cnt){
 
     for(int j=1; j<n; j++){
         //2つ目からスタート
@@ -86,7 +76,57 @@ int main(){
         }
     }
 
-    cout << cnt << endl;
+    return cnt;
+
+}
+
+int main(){
+
+    cin >> n;
+    ll a[int(1e5)+5];
+    ll b[int(1e5)+5];
+
+    for(int i=0; i<n; i++){
+        cin >> a[i];
+        b[i] = a[i];
+    }
+
+    ll cnt=0;
+    ll sum=0;
+    ll result;
+
+
+    if(a[0] > 0){
+
+        //-1までするのと, そのままで行うのをふた通り試す
+        cnt += a[0]+1; //-1まで
+        sum = -1;
+
+        ll ans1 = rp(a, sum, cnt);
+
+        sum = b[0]; //..? たぶんa[0]だな
+        cnt = 0;
+
+        ll ans2 = rp(b, sum, cnt);
+
+        result = min(ans1, ans2);
+    }else{
+
+        sum = 1;
+        cnt = a[0]+1;
+
+        ll ans1 = rp(a, sum, cnt);
+
+        sum = b[0];
+        cnt = 0;
+
+        ll ans2 = rp(b, sum, cnt);
+
+        result = min(ans1, ans2);
+
+    }
+
+    cout << result << endl;
 
 
 }
