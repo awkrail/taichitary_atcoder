@@ -44,22 +44,25 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
+int a[110];
+
 int main(){
 
-    int H1, W1, H2, W2;
-    cin >> H1 >> W1;
-    cin >> H2 >> W2;
+    int n, q;
+    cin >> n >> q;
+    for(int i=0; i<=n; i++) a[i] = 0;
 
-    string ans = "NO";
+    //i=1からスタート
+    a[0] = -1;
 
-    if(H1 == H2
-       || H1 == W2
-       || W1 == H2
-       || W1 == W2) {
-        ans = "YES";
+    for(int i=0; i<q; i++){
+        int l, r, t;
+        cin >> l >> r >> t;
+        for(int j=l; j<=r; j++) a[j] = t;
     }
 
-    cout << ans << endl;
-
+    for(int i=1; i<=n; i++){
+        cout << a[i] << endl;
+    }
 
 }

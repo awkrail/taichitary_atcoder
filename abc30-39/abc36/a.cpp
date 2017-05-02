@@ -46,20 +46,17 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
-    int H1, W1, H2, W2;
-    cin >> H1 >> W1;
-    cin >> H2 >> W2;
+    int a, b;
+    cin >> a >> b;
+    int cnt=0;
 
-    string ans = "NO";
-
-    if(H1 == H2
-       || H1 == W2
-       || W1 == H2
-       || W1 == W2) {
-        ans = "YES";
+    while(1){
+        b -= a;
+        cnt += 1;
+        if(b<=0) break;
     }
 
-    cout << ans << endl;
 
+    cout << cnt << endl;
 
 }

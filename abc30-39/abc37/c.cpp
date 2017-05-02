@@ -46,20 +46,20 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
-    int H1, W1, H2, W2;
-    cin >> H1 >> W1;
-    cin >> H2 >> W2;
+    //ちがうっぽい
+    int n, k;
+    cin >> n >> k;
+    ll sum = 0;
+    int a[int(1e5)+10];
 
-    string ans = "NO";
+    for(int i=0; i<n; i++) cin >> a[i];
 
-    if(H1 == H2
-       || H1 == W2
-       || W1 == H2
-       || W1 == W2) {
-        ans = "YES";
+    for(int i=0; i<k; i++){
+        for(int j=i; j<i+(n-k+1); j++){
+            sum += a[j];
+        }
     }
 
-    cout << ans << endl;
-
+    cout << sum << endl;
 
 }

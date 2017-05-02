@@ -46,20 +46,22 @@ int dy[]={0,0,-1,1};
 
 int main(){
 
-    int H1, W1, H2, W2;
-    cin >> H1 >> W1;
-    cin >> H2 >> W2;
+    int n;
+    cin >> n;
+    string s[100];
+    string ans[100];
 
-    string ans = "NO";
+    for(int i=0; i<n; i++) cin >> s[i];
 
-    if(H1 == H2
-       || H1 == W2
-       || W1 == H2
-       || W1 == W2) {
-        ans = "YES";
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            ans[j][i] = s[n-1-i][j];
+        }
     }
 
-    cout << ans << endl;
-
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++) cout << ans[i][j];
+        cout << endl;
+    }
 
 }
