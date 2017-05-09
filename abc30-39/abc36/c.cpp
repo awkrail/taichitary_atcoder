@@ -97,7 +97,7 @@ int main(){
 
     int n;
     cin >> n;
-    int a[int(1e5)+10];
+    int a[int(1e5)+10], b[int(1e5)+10];
 
     for(int i=0; i<n; i++) cin >> a[i];
 
@@ -109,11 +109,19 @@ int main(){
 
     int cnt = 0;
 
-    for(int i=0; i<n; i++){
-        M[a[i]] = cnt;
+    map<int, int>::iterator ite;
+    for(ite = M.begin(); ite != M.end(); ite++){
+        ite->second = cnt;
         cnt++;
     }
 
+    for(int i=0; i<n; i++){
+        b[i] = M[a[i]];
+    }
+
+    for(int j=0; j<n; j++){
+        cout << b[j] << endl;
+    }
     
 
 }

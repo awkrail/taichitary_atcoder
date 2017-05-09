@@ -44,21 +44,36 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-int t[int(2e5)+5];
+struct Town{
+    string s;
+    int p;
+};
 
 int main(){
 
-    int n, T;
-    cin >> n >> T;
-    for(int i=0; i<int(2e5+5); i++) t[i] = INF;
-    for(int i=0; i<n; i++) cin >> t[i];
+    int n;
+    cin >> n;
 
-    ll sum = 0;
+    Town T[1100];
+
+    int sum = 0;
 
     for(int i=0; i<n; i++){
-        sum += min(T, t[i+1]-t[i]);
+        cin >> T[i].s >> T[i].p;
+        sum += T[i].p;
     }
 
-    cout << sum << endl;
+    bool flag = true;
+
+    for(int i=0; i<n; i++){
+        if(T[i].p > sum / 2){
+            flag = false;
+            cout << T[i].s << endl;
+        }
+    }
+
+    if(flag){
+        cout << "atcoder" << endl;
+    }
 
 }

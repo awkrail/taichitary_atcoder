@@ -44,21 +44,47 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-int t[int(2e5)+5];
-
 int main(){
 
-    int n, T;
-    cin >> n >> T;
-    for(int i=0; i<int(2e5+5); i++) t[i] = INF;
-    for(int i=0; i<n; i++) cin >> t[i];
+    int n, q;
+    int a[int(2e5)+10];
+    cin >> n >> q;
 
-    ll sum = 0;
+    //素朴に解く
+    for(int i=0; i<n; i++) a[i] = 0;
 
-    for(int i=0; i<n; i++){
-        sum += min(T, t[i+1]-t[i]);
+    /**
+    for(int i=0; i<q; i++){
+        int l, r;
+        cin >> l >> r;
+        l--;
+        r--;
+        for(int j=l; j<=r; j++) {
+            a[j] = (1^a[j]);
+        }
+    }
+     **/
+
+    for(int i=0; i<q; i++){
+        int l, r;
+        cin >> l >> r;
+        a[l-1] += 1;
+        a[r] -= 1;
     }
 
-    cout << sum << endl;
+    int sum = 0;
 
+    int b[int(2e5)+10];
+
+    for(int k=0; k<n; k++){
+        sum += a[k];
+        b[k] = sum;
+    }
+
+    for(int i=0; i<n; i++){
+        if(b[i] % 2 == 0) cout << 0;
+        else cout << 1;
+    }
+
+    cout << endl;
 }

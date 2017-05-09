@@ -44,21 +44,27 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-int t[int(2e5)+5];
+int dp[5000][5000];
 
 int main(){
 
-    int n, T;
-    cin >> n >> T;
-    for(int i=0; i<int(2e5+5); i++) t[i] = INF;
-    for(int i=0; i<n; i++) cin >> t[i];
+    int w, h;
+    cin >> w >> h;
 
-    ll sum = 0;
 
-    for(int i=0; i<n; i++){
-        sum += min(T, t[i+1]-t[i]);
+    int max = 5000;
+
+    for(int i=0; i<max; i++){
+        for(int j=0; j<=i; j++){
+            if(j == 0 || j == i) dp[i][j] = 1;
+            else{
+                dp[i][j] = (dp[i-1][j-1] + dp[i-1][j]) % MOD;
+            }
+        }
     }
 
-    cout << sum << endl;
+    dp[0][0] = 0;
+
+    cout << dp[w+h-2][w-1] << endl;
 
 }

@@ -44,21 +44,20 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-int t[int(2e5)+5];
-
 int main(){
 
-    int n, T;
-    cin >> n >> T;
-    for(int i=0; i<int(2e5+5); i++) t[i] = INF;
-    for(int i=0; i<n; i++) cin >> t[i];
+    string s;
+    cin >> s;
 
-    ll sum = 0;
+    char chs = s[0];
+    bool flag = true;
 
-    for(int i=0; i<n; i++){
-        sum += min(T, t[i+1]-t[i]);
+    for(int i=0; i<s.size(); i++){
+        if(chs != s[i]) flag = false;
     }
 
-    cout << sum << endl;
+    if(flag) cout << "SAME" << endl;
+    else cout << "DIFFERENT" << endl;
+
 
 }
