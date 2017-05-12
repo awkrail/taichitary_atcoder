@@ -50,7 +50,7 @@ int main(){
 
     int n, T;
     cin >> n >> T;
-    for(int i=0; i<int(2e5+5); i++) t[i] = INF;
+    for(int i=0; i<int(2e5+5); i++) t[i] = 2*INF;
     for(int i=0; i<n; i++) cin >> t[i];
 
     ll sum = 0;

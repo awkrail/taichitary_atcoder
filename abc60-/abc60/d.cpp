@@ -44,65 +44,56 @@ const double PI = acos(-1);
 int dx[]={-1,1,0,0};
 int dy[]={0,0,-1,1};
 
-struct Wv {
-    int w, v;
-};
-
-Wv item[110];
-int n;
-int dp[110][110];
-
-// 引数多すぎ 2^n
-int dfs(int rest, int val, int depth){
-    //終了条件
-    if(rest < 0) return 0;
-    if(depth == n) return val;
-
-    //入れる場合
-    int p1 = dfs(rest-item[depth].w, val+item[depth].v, depth+1);
-
-    //入れない場合
-    int p2 = dfs(rest, val, depth+1);
-
-    return max(p1, p2);
-}
-
-// メモ化再帰のつもり
-int dfs2(int rest, int depth){
-    //終了条件
-    if(dp[rest][depth] != -1) return dp[rest][depth];
-
-    int res;
-    if(depth == n){
-        res = 0;
-    }
-    //depth番目のものがはいるかどうかを確認してから再帰
-    else if(rest < item[depth].w){
-        res = dfs2(rest, depth+1);
-    }else{
-        res = max(
-                dfs2(rest-item[depth].w, depth+1)+item[depth].v,
-                dfs2(rest, depth+1)
-        );
-    }
-
-    return dp[rest][depth] = res;
-}
-
-
 int main(){
-
-    int W;
-    cin >> n >> W;
-
-    for(int i=0; i<110; i++){
-        for(int j=0; j<110; j++) dp[i][j] = -1;
-    }
+    int n, w;
+    cin >> n >> w;
+    int W[110], V[110];
 
     for(int i=0; i<n; i++){
-        cin >> item[i].w >> item[i].v;
+        cin >> W[i] >> V[i];
     }
 
-    cout << dfs2(W, 0) << endl;
+    vector<ll> itm[5];
+    // 妙な制約には気をつけよう
+    ll w1 = W[0];
+
+    for(int i=0; i<n; i++){
+        itm[W[i]-w1].pb(V[i]);
+    }
+
+    for(int i=0; i<5; i++) sort(itm[i].begin(), itm[i].end());
+
+    for(int i=0; i<5; i++){
+        itm[i].pb(0);
+        reverse(itm[i].begin(), itm[i].end());
+    }
+
+    ll value_max = -1;
+
+    //累積和をとる
+    for(int i=0; i<itm[0].size(); i++)if(i+1 != itm[0].size()) itm[0][i+1] += itm[0][i];
+
+    for(int j=0; j<itm[1].size(); j++)if(j+1 != itm[1].size()) itm[1][j+1] += itm[1][j];
+
+    for(int k=0; k<itm[2].size(); k++)if(k+1 != itm[2].size()) itm[2][k+1] += itm[2][k];
+
+    for(int l=0; l<itm[3].size(); l++)if(l+1 != itm[3].size()) itm[3][l+1] += itm[3][l];
+
+
+    // unsigned int で0-1はUNSINGED_INTMAX-1になるのでやばい
+    for(int i=0; i<itm[0].size(); i++){
+        for(int j=0; j<itm[1].size(); j++){
+            for(int k=0; k<itm[2].size(); k++){
+                for(int l=0; l<itm[3].size(); l++){
+                    ll val_sum = 0;
+                    val_sum = itm[0][i] + itm[1][j] + itm[2][k] + itm[3][l];
+                    ll sum_W = w1*i + (w1+1)*j + (w1+2)*k + (w1+3)*l;
+                    if(sum_W <= w && value_max < val_sum) value_max = val_sum;
+                }
+            }
+        }
+    }
+
+    cout << value_max << endl;
 
 }
