@@ -47,13 +47,30 @@ int dy[]={0,0,-1,1};
 int main(){
 
     int n;
+
+    cin >> n;
+
     int a[int(1e5)+5];
 
     for(int i=0; i<n; i++){
         cin >> a[i];
     }
 
+    //番兵で一番最後にa[n-1]の値をいれる
+    a[n] = a[n-1];
 
+    int cnt = 0;
 
+    for(int l=0; l<n; l++){
+        for(int r=l; r<n; r++){
+            if(a[r] < a[r+1]) {
+                cout << l << " " << r << endl;
+                cnt++;
+            }
+            else break;
+        }
+    }
+
+    cout << cnt << endl;
 
 }

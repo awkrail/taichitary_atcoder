@@ -98,7 +98,7 @@ int main(){
         if(neg[i]) flg = false;
     }
 
-    if(flg){
+    if(!neg[n-1]){
         cout << -d[n-1] << endl;
     }else{
         cout << "inf" << endl;

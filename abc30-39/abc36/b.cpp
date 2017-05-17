@@ -48,19 +48,21 @@ int main(){
 
     int n;
     cin >> n;
-    string s[100];
-    string ans[100];
+    char s[100][100];
+    char ans[100][100];
 
     for(int i=0; i<n; i++) cin >> s[i];
 
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
-            ans[j][i] = s[n-1-i][j];
+            ans[j][(n-1)-i] = s[i][j];
         }
     }
 
     for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++) cout << ans[i][j];
+        for(int j=0; j<n; j++){
+            cout << ans[i][j];
+        }
         cout << endl;
     }
 
